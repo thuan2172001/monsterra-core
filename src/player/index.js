@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useRef, useState, useImperativeHandle } from 'react';
 import core from './core';
-import { REPLAY_MODE, EventType, CallbackEvent } from './core';
+import { EventType, CallbackEvent } from './core';
 
 function Player(props, ref) {
   const [isReady, setIsReady] = useState(false);
@@ -9,16 +9,20 @@ function Player(props, ref) {
   useImperativeHandle(ref, () => ({
     setData,
     start, stop,
-    pause, resume, setSpeed, setFrame, setVolume, getScreenshot
+    pause, resume, setSpeed, setFrame, setVolume, getScreenshot, getCameraInfo
   }));
   function checkPlayer() {
     if (!isReady) {
       throw new Error('player_is_not_ready');
     }
   }
-  function getScreenshot(mode, data, frame) {
+  function getScreenshot(mode, data, frame, camInfo = null) {
     checkPlayer();
-    core.callUnity(EventType.GetScreenshot, { mode, data, frame });
+    core.callUnity(EventType.GetScreenshot, { mode, data, frame, camInfo });
+  }
+  function getCameraInfo() {
+    checkPlayer();
+    core.callUnity(EventType.GetCameraInfo, {});
   }
   function setSpeed(speed) {
     checkPlayer();
@@ -118,6 +122,12 @@ function Player(props, ref) {
           console.log('event on capture');
           if (props.OnCapture) {
             props.OnCapture(payload);
+          }
+          break;
+        case CallbackEvent.OnCameraInfo:
+          console.log('event on get camera info');
+          if (props.OnCameraInfo) {
+            props.OnCameraInfo(payload);
           }
           break;
       }

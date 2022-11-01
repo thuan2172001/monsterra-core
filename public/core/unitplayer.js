@@ -69,9 +69,9 @@ function initUnity(_container, _canvas) {
   canvas = _canvas;
   var loaderUrl = 'core/1c545332af8d46a03de13097c17364f5.js';
   var config = {
-    dataUrl: 'core/478824348ed71080e296da9dafbc4f0c.data.unityweb',
-    frameworkUrl: 'core/d46f04a5fd070150875f19418402b2a0.js.unityweb',
-    codeUrl: 'core/47ad1b363d9d29cd3fd23041fb1ddf72.wasm.unityweb',
+    dataUrl: 'core/9c1791ce7c80f01f6664f350aaa7918b.data.unityweb',
+    frameworkUrl: 'core/6685488552a088e7532845a4ff44879c.js.unityweb',
+    codeUrl: 'core/b230fa313849d560201e31e30854197d.wasm.unityweb',
     streamingAssetsUrl: "StreamingAssets",
     companyName: "Monsterra",
     productName: "Monterra",

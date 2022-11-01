@@ -21,7 +21,8 @@ export const EventType = {
   SetFrame: 5,
   SetSpeed: 6,
   SetVolume: 7,
-  GetScreenshot: 8
+  GetScreenshot: 8,
+  GetCameraInfo: 9,
 }
 
 export const CallbackEvent = {
@@ -36,7 +37,8 @@ export const CallbackEvent = {
   OnError: 8,
   OnSetFrame: 9,
   OnSetSpeed: 10,
-  OnCapture: 11
+  OnCapture: 11,
+  OnCameraInfo: 12
 }
 const core = { callUnity };
 export default core;

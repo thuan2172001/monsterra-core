@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import api from "./api"
-import { REPLAY_MODE, EventType } from '../player/core';
+import { REPLAY_MODE } from '../player/core';
 import Player from '../player';
 export default function Screenshot() {
   const playerRef = useRef();
@@ -59,9 +59,10 @@ export default function Screenshot() {
       getNextRequest();
     }
   }
-  async function getScreenshot(data, frame) {
+  async function getScreenshot(data, frame, camInfo = null) {
+    // camInfo is information of camera. Get through CallbackEvent OnCameraInfo 
     return new Promise((resolve, reject) => {
-      playerRef.current.getScreenshot(REPLAY_MODE.BATTLE_FRONT, data, frame);
+      playerRef.current.getScreenshot(REPLAY_MODE.BATTLE_FRONT, data, frame, camInfo);
     })
   }
   return <div>
@@ -69,7 +70,10 @@ export default function Screenshot() {
     <Player ref={playerRef}
       onReady={payload => { setReady(true) }}
       OnCapture={payload => {
-        setImg('data:image/png;base64,' + payload);
+        setImg('data:image/png;base64,' + payload[0]);
+      }}
+      OnCameraInfo={payload => {
+        console.log('OnCameraInfo', payload);
       }}
     />
   </div>

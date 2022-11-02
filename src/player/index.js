@@ -43,7 +43,9 @@ function Player(props, ref) {
   }
   function start() {
     checkPlayer();
+    console.log("1")
     core.callUnity(EventType.Start, {});
+    console.log("2")
   }
   function stop() {
     checkPlayer();

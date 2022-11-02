@@ -35,9 +35,6 @@ function TestPlayer() {
   function _setSpeed(speed) {
     playerRef.current.setSpeed(Number(speed));
   }
-  function _setSpeed(speed) {
-    playerRef.current.setSpeed(Number(speed));
-  }
   function _setVol() {
     playerRef.current.setVolume(0);
   }
@@ -72,7 +69,7 @@ function TestPlayer() {
       }}
     />
     <button onClick={() => { setData(0, null) }}>Set Data frame 0</button>
-    <button onClick={() => { setData(100, null) }}>Set Data frame 100</button>
+    <button onClick={() => { setData(10, null) }}>Set Data frame 10</button>
     <button onClick={start}>start</button>
     <button onClick={stop}>stop</button>
     <button onClick={pause}>pause</button>
